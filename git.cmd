@@ -1,3 +1,4 @@
+git rm -r --cached .
 git add .
 git status
 git pull
