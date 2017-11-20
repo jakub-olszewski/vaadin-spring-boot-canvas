@@ -54,3 +54,4 @@ If Vaadin pre-releases are not enabled by default, use the Maven parameter
 Usefull external links:
 -------------------------
 https://javastart.pl/static/category/programowanie-obiektowe/
+https://mickl.net/2016/10/10/8-rzeczy-ktore-warto-wiedziec-projektujac-rest-owe-api/
