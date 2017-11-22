@@ -35,6 +35,7 @@ public class Ludzik {
 		plotno.rysujOkrag(x, y, 200);
 		plotno.rysujOkrag(x, y, 150);
 		plotno.rysujOkrag(x, y, 100);
+		plotno.rysujOkrag(x, y, 50);
 	}
 
 	public void przedstawSie() {

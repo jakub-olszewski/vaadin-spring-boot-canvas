@@ -74,7 +74,7 @@ public class MyUI extends UI {
 		menu.addItem("Rysuj trójkąt", e -> plotno.rysujOkrag(100, 100, 50));
 		menu.addItem("Rysuj linie", e -> plotno.rysujLinie());
 		menu.setSizeFull();
-		plotno.rysujLinie(691, 287, 1144, 281);
-		Ludzik tomekludzik = new Ludzik(plotno, 200, 200);
+		// plotno.rysujLinie(691, 287, 1144, 281);
+		Ludzik tomekludzik = new Ludzik(plotno, 650, 300);
 	}
 }
