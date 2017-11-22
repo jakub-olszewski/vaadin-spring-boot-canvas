@@ -28,6 +28,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import eu.b24u.vaadin.canvas.Plotno;
+import eu.b24u.vaadin.sandbox.Ludzik;
 
 @SpringUI
 @Theme("mytheme")
@@ -74,6 +75,6 @@ public class MyUI extends UI {
 		menu.addItem("Rysuj linie", e -> plotno.rysujLinie());
 		menu.setSizeFull();
 		plotno.rysujLinie(691, 287, 1144, 281);
-
+		Ludzik tomekludzik = new Ludzik(plotno, 200, 200);
 	}
 }
