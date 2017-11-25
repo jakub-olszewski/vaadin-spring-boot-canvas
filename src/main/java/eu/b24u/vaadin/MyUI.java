@@ -79,9 +79,11 @@ public class MyUI extends UI {
 		// plotno.rysujLinie(691, 287, 1144, 281);
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 
-		Tarcza tomekludzik = new Tarcza(plotno, 650, 300);
+		Tarcza kolorowaTarcza = new Tarcza(plotno, 650, 300);
 		plotno.rysujTrojkat(new Punkt(100, 300), new Punkt(200, 100), new Punkt(400, 100), Color.GREEN);
-		plotno.drawLine(new Punkt(100, 300), new Punkt(200, 100), Color.BLUE);
+		plotno.rysujLinie(new Punkt(100, 300), new Punkt(200, 100), Color.BLUE);
 		// http://www.tayloredmktg.com/rgb/
+		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+
 	}
 }

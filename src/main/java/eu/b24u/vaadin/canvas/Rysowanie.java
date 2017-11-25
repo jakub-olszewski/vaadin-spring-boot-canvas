@@ -29,6 +29,12 @@ public interface Rysowanie {
   }
   
   public Point getClickPoint();
+
+	default public void wstawText(Punkt p, String text) {
+		insertText(p, text);
+	}
+
+	public void insertText(Point p, String text);
   
   default public void rysujLinie(int x1, int y1,int x2, int y2){
 		drawLine(new Point(x1, y1), new Point(x2, y2), null);
@@ -38,7 +44,9 @@ public interface Rysowanie {
 		drawLine(new Point(x1, y1), new Point(x2, y2), color);
   }
   
-
+	default public void rysujLinie(Point a, Point b, Color color) {
+		drawLine(a, b, color);
+	}
 	default public void rysujProstokat(Point a, Point b, Color color) {
 		drawRectangle(a, b, color);
 	}
