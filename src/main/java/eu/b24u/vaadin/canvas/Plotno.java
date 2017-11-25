@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.vaadin.hezamu.canvas.Canvas;
 
 import com.vaadin.shared.MouseEventDetails;
+import com.vaadin.shared.ui.colorpicker.Color;
 
 public class Plotno extends Canvas implements Rysowanie {
 
@@ -25,7 +26,7 @@ public class Plotno extends Canvas implements Rysowanie {
 			@Override
 			public void onMouseDown(MouseEventDetails mouseDetails) {
 				klikPunkt.setLocation(mouseDetails.getRelativeX(), mouseDetails.getRelativeY());
-				drawCircle(klikPunkt.x, klikPunkt.y, 3);
+				rysujOkrag(klikPunkt.x, klikPunkt.y, 3);
 				punkty.add(klikPunkt);
 				logger.info(klikPunkt);
 			}
@@ -38,31 +39,46 @@ public class Plotno extends Canvas implements Rysowanie {
 	}
 
 	@Override
-	public void drawCircle(int x, int y, int r) {
+	public void drawCircle(int x, int y, int r, Color color) {
 		beginPath();
 		arc(x, y, r, 0, 2 * Math.PI, true);
+		fillColor(color);
 		stroke();
+	}
+
+	private void fillColor(Color color) {
+		if (color != null) {
+			setFillStyle(color.getRed(), color.getGreen(), color.getBlue());
+			fill();
+		}
 	}
 
 	@Override
-	public void drawLine(int x1, int y1, int x2, int y2) {
-		/*
-		 * saveContext();
-		 * 
-		 * beginPath(); moveTo(x1, y1); lineTo(x2, y2); stroke();
-		 */
+	public void drawLine(Point a, Point b, Color color) {
 		beginPath();
-		moveTo(x1, y1);
-		lineTo(x2, y2);
+		moveTo(a.getX(), a.getY());
+		lineTo(b.getX(), b.getY());
+		fillColor(color);
 		stroke();
+		closePath();
 	}
 
-	public void rysujLinie() {
-		int ostatniPunkt = punkty.size();
-		Punkt punktOd = punkty.get(0);
-		Punkt punktDo = punkty.get(1);
+	@Override
+	public void drawTriangle(Point a, Point b, Point c, Color color) {
+		beginPath();
+		moveTo(a.getX(), a.getY());
+		lineTo(b.getX(), b.getY());
+		lineTo(c.getX(), c.getY());
+		fillColor(color);
+		closePath();
+	}
 
-		drawLine(punktOd.x, punktOd.y, punktDo.x, punktDo.y);
+	@Override
+	public void drawRectangle(Point a, Point b, Color color) {
+		beginPath();
+		fillColor(color);
+		fillRect(a.getX(), a.getY(), b.getX(), b.getY());
+		closePath();
 	}
 
 }

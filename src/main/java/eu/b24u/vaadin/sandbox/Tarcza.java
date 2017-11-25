@@ -1,8 +1,10 @@
 package eu.b24u.vaadin.sandbox;
 
+import com.vaadin.shared.ui.colorpicker.Color;
+
 import eu.b24u.vaadin.canvas.Plotno;
 
-public class Ludzik {
+public class Tarcza {
 	int x;
 
 	public int getX() {
@@ -29,13 +31,13 @@ public class Ludzik {
 	 * @param plotno
 	 *            - plansza na ktorej rysujemy ludzika
 	 */
-	public Ludzik(Plotno plotno, int x, int y) {
+	public Tarcza(Plotno plotno, int x, int y) {
 		setX(x);
 		setY(y);
-		plotno.rysujOkrag(x, y, 200);
-		plotno.rysujOkrag(x, y, 150);
-		plotno.rysujOkrag(x, y, 100);
-		plotno.rysujOkrag(x, y, 50);
+		plotno.rysujKolo(x, y, 200, Color.RED);
+		plotno.rysujKolo(x, y, 150, Color.WHITE);
+		plotno.rysujKolo(x, y, 100, Color.RED);
+		plotno.rysujKolo(x, y, 50, Color.WHITE);
 	}
 
 	public void przedstawSie() {

@@ -25,8 +25,8 @@ public class Main {
 
 		// W tej lini tworzymy zmienna o nazwie filipludzik
 		// New oznacza tworzenie nowego obiektu
-		Ludzik filipLudzik = new Ludzik(null, 0, 0);
-		Ludzik dawidLudzik;
+		Tarcza filipLudzik = new Tarcza(null, 0, 0);
+		Tarcza dawidLudzik;
 		filipLudzik.przedstawSie();
 	}
 

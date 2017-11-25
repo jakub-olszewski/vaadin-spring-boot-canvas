@@ -18,6 +18,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Viewport;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.spring.annotation.EnableVaadin;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
@@ -28,7 +29,8 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import eu.b24u.vaadin.canvas.Plotno;
-import eu.b24u.vaadin.sandbox.Ludzik;
+import eu.b24u.vaadin.canvas.Punkt;
+import eu.b24u.vaadin.sandbox.Tarcza;
 
 @SpringUI
 @Theme("mytheme")
@@ -72,9 +74,14 @@ public class MyUI extends UI {
 		setContent(verticalLayout);
 
 		menu.addItem("Rysuj trójkąt", e -> plotno.rysujOkrag(100, 100, 50));
-		menu.addItem("Rysuj linie", e -> plotno.rysujLinie());
+		menu.addItem("Rysuj linie", null);
 		menu.setSizeFull();
 		// plotno.rysujLinie(691, 287, 1144, 281);
-		Ludzik tomekludzik = new Ludzik(plotno, 650, 300);
+		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
+
+		Tarcza tomekludzik = new Tarcza(plotno, 650, 300);
+		plotno.rysujTrojkat(new Punkt(100, 300), new Punkt(200, 100), new Punkt(400, 100), Color.GREEN);
+		plotno.drawLine(new Punkt(100, 300), new Punkt(200, 100), Color.BLUE);
+		// http://www.tayloredmktg.com/rgb/
 	}
 }
