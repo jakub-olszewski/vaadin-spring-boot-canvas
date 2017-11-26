@@ -2,12 +2,20 @@ package eu.b24u.vaadin.canvas;
 
 import java.awt.Point;
 
+import org.vaadin.hezamu.canvas.Canvas.CanvasMouseDownListener;
+
 import com.vaadin.shared.ui.colorpicker.Color;
 
 public interface Rysowanie {
-  
+
+	public void dodajZdarzenieNaKlikniecieMyszka(CanvasMouseDownListener listener);
+
+	default public void rysujOkrag(Punkt p, int r) {
+		drawCircle(p, r, null);
+	}
+
   default public void rysujOkrag(int x, int y, int r){
-		drawCircle(x, y, r, null);
+		drawCircle(new Point(x, y), r, null);
   }
   
 	default public void rysujTrojkat(Punkt a, Punkt b, Punkt c) {
@@ -19,10 +27,10 @@ public interface Rysowanie {
 	}
 
 	default public void rysujKolo(int x, int y, int r, Color color) {
-		drawCircle(x, y, r, color);
+		drawCircle(new Point(x, y), r, color);
 	}
 
-	public void drawCircle(int x, int y, int r, Color color);
+	public void drawCircle(Point s, int r, Color color);
 
   default public Punkt pobierzKliknietyPunkt(){
     return (Punkt) getClickPoint();

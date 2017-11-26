@@ -38,6 +38,7 @@ public class Tarcza {
 		plotno.rysujKolo(x, y, 150, Color.WHITE);
 		plotno.rysujKolo(x, y, 100, Color.RED);
 		plotno.rysujKolo(x, y, 50, Color.WHITE);
+		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> plotno.rysujOkrag(plotno.pobierzKliknietyPunkt(), 3));
 	}
 
 	public void przedstawSie() {

@@ -26,7 +26,6 @@ public class Plotno extends Canvas implements Rysowanie {
 			@Override
 			public void onMouseDown(MouseEventDetails mouseDetails) {
 				klikPunkt.setLocation(mouseDetails.getRelativeX(), mouseDetails.getRelativeY());
-				rysujOkrag(klikPunkt.x, klikPunkt.y, 3);
 				punkty.add(klikPunkt);
 				logger.info(klikPunkt);
 			}
@@ -39,9 +38,9 @@ public class Plotno extends Canvas implements Rysowanie {
 	}
 
 	@Override
-	public void drawCircle(int x, int y, int r, Color color) {
+	public void drawCircle(Point s, int r, Color color) {
 		beginPath();
-		arc(x, y, r, 0, 2 * Math.PI, true);
+		arc(s.x, s.y, r, 0, 2 * Math.PI, true);
 		fillColor(color);
 		stroke();
 	}
@@ -85,6 +84,14 @@ public class Plotno extends Canvas implements Rysowanie {
 	public void insertText(Point p, String text) {
 		setFont("30px Arial");
 		fillText("Gra Lotki !", p.getX(), p.getY(), 200);
+	}
+
+	@Override
+	public void dodajZdarzenieNaKlikniecieMyszka(CanvasMouseDownListener listener) {
+		addMouseDownListener(listener);
+
+		// ;
+
 	}
 
 }
