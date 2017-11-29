@@ -1,12 +1,10 @@
 package eu.b24u.vaadin.sandbox;
 
-import com.vaadin.shared.ui.colorpicker.Color;
-
 import eu.b24u.vaadin.canvas.Plotno;
 
-public class Tarcza {
+public abstract class ElementNaPlotnie {
 	int x;
-
+	protected Plotno plotno;
 	public int getX() {
 		return x;
 	}
@@ -31,16 +29,13 @@ public class Tarcza {
 	 * @param plotno
 	 *            - plansza na ktorej rysujemy ludzika
 	 */
-	public Tarcza(Plotno plotno, int x, int y) {
+	public ElementNaPlotnie(Plotno plotno, int x, int y) {
 		setX(x);
 		setY(y);
-		plotno.rysujKolo(x, y, 200, Color.BLUE);
-		plotno.rysujKolo(x, y, 150, Color.WHITE);
-		plotno.rysujKolo(x, y, 100, Color.RED);
-		plotno.rysujKolo(x, y, 50, Color.WHITE);
-		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> plotno.rysujOkrag(plotno.pobierzKliknietyPunkt(), 3));
+		rysowanie();
 	}
 
+	abstract public void rysowanie();
 	public void przedstawSie() {
 		System.out.println("Czesc to ja ludzik !");
 	}
