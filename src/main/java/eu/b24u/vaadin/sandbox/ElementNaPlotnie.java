@@ -4,7 +4,7 @@ import eu.b24u.vaadin.canvas.Plotno;
 
 public abstract class ElementNaPlotnie {
 	int x;
-	protected Plotno plotno;
+	Plotno plotno;
 	public int getX() {
 		return x;
 	}
@@ -32,12 +32,21 @@ public abstract class ElementNaPlotnie {
 	public ElementNaPlotnie(Plotno plotno, int x, int y) {
 		setX(x);
 		setY(y);
+		setPlotno(plotno);
 		rysowanie();
 	}
 
 	abstract public void rysowanie();
 	public void przedstawSie() {
 		System.out.println("Czesc to ja ludzik !");
+	}
+
+	public Plotno getPlotno() {
+		return plotno;
+	}
+
+	public void setPlotno(Plotno plotno) {
+		this.plotno = plotno;
 	}
 
 }

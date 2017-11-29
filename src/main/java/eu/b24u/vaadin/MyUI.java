@@ -30,6 +30,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import eu.b24u.vaadin.canvas.Plotno;
 import eu.b24u.vaadin.canvas.Punkt;
+import eu.b24u.vaadin.sandbox.Strzala;
 import eu.b24u.vaadin.sandbox.Tarcza;
 
 @SpringUI
@@ -79,12 +80,13 @@ public class MyUI extends UI {
 		// plotno.rysujLinie(691, 287, 1144, 281);
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 
-		Tarcza kolorowaTarcza = new Tarcza(plotno, 800, 300);
-		plotno.rysujTrojkat(new Punkt(50, 200), new Punkt(200, 50), new Punkt(0, 0), Color.BLACK);
-		plotno.rysujLinie(new Punkt(441, 187), new Punkt(544, 326), Color.BLUE);
+		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
+		// plotno.rysujTrojkat(new Punkt(50, 200), new Punkt(200, 50), new Punkt(0, 0),
+		// Color.BLACK);
+		// plotno.rysujLinie(new Punkt(441, 187), new Punkt(544, 326), Color.BLUE);
 		// http://www.tayloredmktg.com/rgb/
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
 
-
+		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> new Strzala(plotno, e.getRelativeX(), e.getRelativeY()));
 	}
 }
