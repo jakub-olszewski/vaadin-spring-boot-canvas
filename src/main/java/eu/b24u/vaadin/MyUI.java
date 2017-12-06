@@ -57,15 +57,12 @@ public class MyUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
-
 		Plotno plotno = new Plotno();
+
 		MenuBar menu = new MenuBar();
-		// plotno.setWidth(95, Unit.PERCENTAGE);
 		CustomLayout content = new CustomLayout("my-layout");
-		// content.setSizeFull();
 		content.addComponent(plotno, "canvas");
 		content.addComponent(menu, "menu");
-		// setContent(content);
 
 		VerticalLayout verticalLayout = new VerticalLayout();
 		verticalLayout.setMargin(false);
@@ -77,16 +74,22 @@ public class MyUI extends UI {
 		menu.addItem("Rysuj trójkąt", e -> plotno.rysujOkrag(100, 100, 50));
 		menu.addItem("Rysuj linie", null);
 		menu.setSizeFull();
-		// plotno.rysujLinie(691, 287, 1144, 281);
+		
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
-
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
-		// plotno.rysujTrojkat(new Punkt(50, 200), new Punkt(200, 50), new Punkt(0, 0),
-		// Color.BLACK);
-		// plotno.rysujLinie(new Punkt(441, 187), new Punkt(544, 326), Color.BLUE);
-		// http://www.tayloredmktg.com/rgb/
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+		
+		//plotno.wstawText(new Punkt(50, 550), "Liczba punktów:");
 
-		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> new Strzala(plotno, e.getRelativeX(), e.getRelativeY()));
+		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
+			plotno.clear();
+			plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+			plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
+			Tarcza tarcza = new Tarcza(plotno, 600, 300);
+			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
+			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + odleglosc);
+			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
+		});
 	}
+
 }

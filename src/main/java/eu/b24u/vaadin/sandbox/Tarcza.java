@@ -3,6 +3,7 @@ package eu.b24u.vaadin.sandbox;
 import com.vaadin.shared.ui.colorpicker.Color;
 
 import eu.b24u.vaadin.canvas.Plotno;
+import eu.b24u.vaadin.canvas.Punkt;
 
 public class Tarcza {
 	int x;
@@ -43,6 +44,25 @@ public class Tarcza {
 
 	public void przedstawSie() {
 		System.out.println("Czesc to ja ludzik !");
+	}
+
+	/*
+	 * sroded<br> |\ <br> p | \<br> | \ odleglosc<br> | \<br> | \<br> -------<br>
+	 * q<br>
+	 */
+	public double obliczOdlegloscOdSrodka(Punkt s) {
+		return obliczOdlegloscPomiedzyPunktami(pobierzSrodek(), s);
+	}
+
+	public double obliczOdlegloscPomiedzyPunktami(Punkt a, Punkt b) {
+		double p = Math.abs(b.getY() - a.getY());
+		double q = Math.abs(b.getX() - a.getX());
+		double odleglosc = Math.sqrt(Math.pow(p, 2) + Math.pow(p, 2));
+		return odleglosc;
+	}
+
+	private Punkt pobierzSrodek() {
+		return new Punkt(getX(), getY());
 	}
 
 }
