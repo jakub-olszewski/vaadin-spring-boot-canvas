@@ -58,7 +58,7 @@ public class Tarcza {
 	public double obliczOdlegloscPomiedzyPunktami(Punkt a, Punkt b) {
 		double p = Math.abs(b.getY() - a.getY());
 		double q = Math.abs(b.getX() - a.getX());
-		double odleglosc = Math.sqrt(Math.pow(p, 2) + Math.pow(p, 2));
+		double odleglosc = Math.sqrt(Math.pow(p, 2) + Math.pow(q, 2));
 		return odleglosc;
 	}
 

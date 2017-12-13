@@ -26,7 +26,7 @@ public class Plotno extends Canvas implements Rysowanie {
 			@Override
 			public void onMouseDown(MouseEventDetails mouseDetails) {
 				klikPunkt.setLocation(mouseDetails.getRelativeX(), mouseDetails.getRelativeY());
-				punkty.add(klikPunkt);
+				// punkty.add(klikPunkt);
 				logger.info(klikPunkt);
 			}
 		});

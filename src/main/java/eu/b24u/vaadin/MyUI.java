@@ -98,11 +98,12 @@ public class MyUI extends UI {
 			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + odleglosc);
 			//
 			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
-			if (odleglosc < 18) {
+			if (odleglosc < 200) {
 				Notification.show("trafiony");
 			} else {
 				Notification.show("nie trafiony");
 			}
+			System.out.println("odleglosc=" + odleglosc);
 		});
 	}
 
