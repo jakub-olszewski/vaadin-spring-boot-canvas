@@ -82,8 +82,11 @@ public class MyUI extends UI {
 		//plotno.wstawText(new Punkt(50, 550), "Liczba punktów:");
 
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
+			// czysci plotno
 			plotno.clear();
+			// wstawia tekst "Gra lotki !"
 			plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+			//
 			plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 			Tarcza tarcza = new Tarcza(plotno, 600, 300);
 			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
