@@ -89,6 +89,7 @@ public class MyUI extends UI {
 			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
 			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + odleglosc);
 			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
+
 		});
 	}
 
