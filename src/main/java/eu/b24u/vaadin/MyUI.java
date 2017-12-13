@@ -25,6 +25,7 @@ import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.spring.server.SpringVaadinServlet;
 import com.vaadin.ui.CustomLayout;
 import com.vaadin.ui.MenuBar;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -87,14 +88,21 @@ public class MyUI extends UI {
 			plotno.clear();
 			// wstawia tekst "Gra lotki !"
 			plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
-			//
+			// Rysuje prostokat na plotnie
 			plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
-			//
+			// tworzy tarcze na plotnie
 			Tarcza tarcza = new Tarcza(plotno, 600, 300);
+			// oblicza odleglosc od srodka tarczy
 			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
+			// wstawia tekst "Liczba punktów"
 			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + odleglosc);
+			//
 			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
-
+			if (odleglosc < 18) {
+				Notification.show("trafiony");
+			} else {
+				Notification.show("nie trafiony");
+			}
 		});
 	}
 
