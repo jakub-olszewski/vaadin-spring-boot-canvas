@@ -57,6 +57,7 @@ public class MyUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
+
 		Plotno plotno = new Plotno();
 
 		MenuBar menu = new MenuBar();
@@ -97,4 +98,9 @@ public class MyUI extends UI {
 		});
 	}
 
+	
+	public void wypiszOdlegloscOdSrodkaTarczy(Tarcza kolorowaTarcza,int x, int y) {
+		double odleglosc=kolorowaTarcza.obliczOdlegloscOdSrodka(new Punkt (x,y));
+		System.out.println("odleglosc="+odleglosc);
+	}
 }

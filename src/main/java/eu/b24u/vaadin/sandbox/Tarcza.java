@@ -1,3 +1,4 @@
+
 package eu.b24u.vaadin.sandbox;
 
 import com.vaadin.shared.ui.colorpicker.Color;
