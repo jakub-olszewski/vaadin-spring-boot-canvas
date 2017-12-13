@@ -95,15 +95,26 @@ public class MyUI extends UI {
 			// oblicza odleglosc od srodka tarczy
 			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
 			// wstawia tekst "Liczba punktów"
-			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + odleglosc);
+
+			int punkty = 0;
 			//
 			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
 			if (odleglosc < 200) {
-				Notification.show("trafiony");
 			} else {
 				Notification.show("nie trafiony");
 			}
+			if (odleglosc < 50) {
+				Notification.show("Brawo sam środek !!!");
+				punkty = 100;
+			}
+			// znak && oznacza litere 'i'
+			if (odleglosc > 50 && odleglosc < 100) {
+				Notification.show("Brawo sam środek !!!");
+				punkty = 80;
+			}
 			System.out.println("odleglosc=" + odleglosc);
+			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + punkty);
+
 		});
 	}
 
