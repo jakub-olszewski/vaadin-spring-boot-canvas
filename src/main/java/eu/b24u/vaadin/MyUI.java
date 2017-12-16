@@ -81,8 +81,7 @@ public class MyUI extends UI {
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
 		
-		//plotno.wstawText(new Punkt(50, 550), "Liczba punktów:");
-
+		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
 			// czysci plotno
 			plotno.clear();
@@ -92,14 +91,18 @@ public class MyUI extends UI {
 			plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 			// tworzy tarcze na plotnie
 			Tarcza tarcza = new Tarcza(plotno, 600, 300);
+			// pobranie kliknietego punktu na plotnie
+			// kliknietyPunkt - to nazwa zmiennej zawierajacej wspolrzedne klikniecia myszka
+			Punkt kliknietyPunkt = new Punkt(e.getRelativeX(), e.getRelativeY());
 			// oblicza odleglosc od srodka tarczy
-			double odleglosc = tarcza.obliczOdlegloscOdSrodka(new Punkt(e.getRelativeX(), e.getRelativeY()));
+			double odleglosc = tarcza.obliczOdlegloscOdSrodka(kliknietyPunkt);
 			// wstawia tekst "Liczba punktów"
 
 			int punkty = 0;
-			//
-			new Strzala(plotno, e.getRelativeX(), e.getRelativeY());
+			
+			new Strzala(plotno, kliknietyPunkt);
 			if (odleglosc < 200) {
+				//wykonaj kiedy odleglosc jest mniejsz niż 200
 			} else {
 				Notification.show("nie trafiony");
 			}
@@ -109,7 +112,7 @@ public class MyUI extends UI {
 			}
 			// znak && oznacza litere 'i'
 			if (odleglosc > 50 && odleglosc < 100) {
-				Notification.show("Brawo sam środek !!!");
+				Notification.show("Brawo trafiłes w czerwony krąg !!!");
 				punkty = 80;
 			}
 			System.out.println("odleglosc=" + odleglosc);

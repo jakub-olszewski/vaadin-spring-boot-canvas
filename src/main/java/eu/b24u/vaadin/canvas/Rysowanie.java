@@ -38,6 +38,11 @@ public interface Rysowanie {
   
   public Point getClickPoint();
 
+  /**
+   * Przepis na wstawText to wez punki i wstaw tam napis
+   * @param p to punkt
+   * @param text to napis ktory ma byc wstawiony
+   */
 	default public void wstawText(Punkt p, String text) {
 		insertText(p, text);
 	}
@@ -55,8 +60,15 @@ public interface Rysowanie {
 	default public void rysujLinie(Point a, Point b, Color color) {
 		drawLine(a, b, color);
 	}
-	default public void rysujProstokat(Point a, Point b, Color color) {
-		drawRectangle(a, b, color);
+	/**
+	 * Do narysowania prostokąta wystarcza dwa punkty. <br>Na podstawie przekatnej prostokata od punktu a do punktu b rysujemy prostokat.<br>
+	 *  Kolorujemy go kolorem {@value color}
+	 * @param a to punkt startowy
+	 * @param b to punkt koncowy
+	 * @param kolor jakim kolorujemy
+	 */
+	default public void rysujProstokat(Point a, Point b, Color kolor) {
+		drawRectangle(a, b, kolor);
 	}
 	public void drawTriangle(Point a, Point b, Point c, Color color);
 

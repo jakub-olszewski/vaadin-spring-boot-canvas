@@ -28,10 +28,12 @@ public class Tarcza {
 	int y;
 
 	/**
-	 * Konstruktor - konstruje obiekt np rysuje go na planszy
+	 * Tarcza kolorowa na ktorej rysujemy strzale
 	 * 
-	 * @param plotno
-	 *            - plansza na ktorej rysujemy ludzika
+	 * @param plotno to plansza na ktorej rysujemy objekt np. tarcza<br>
+	 * X i Y to wspolrzedne gdzie ma byc narysowana tarcza.
+	 * @param x to wspolrzedna pozioma 
+	 * @param y to wspolrzedna pionowa
 	 */
 	public Tarcza(Plotno plotno, int x, int y) {
 		setX(x);
@@ -47,14 +49,21 @@ public class Tarcza {
 		System.out.println("Czesc to ja ludzik !");
 	}
 
-	/*
-	 * sroded<br> |\ <br> p | \<br> | \ odleglosc<br> | \<br> | \<br> -------<br>
-	 * q<br>
+	/**
+	 * Obliczanie odleglosci od srodka tarczy          
+	 * @param s to wspolrzedna punktu od ktorego liczymy odleglosc
+	 * @return odleglosc punktu s od srodka tarczy
 	 */
 	public double obliczOdlegloscOdSrodka(Punkt s) {
 		return obliczOdlegloscPomiedzyPunktami(pobierzSrodek(), s);
 	}
 
+	/**
+	 * Oblicza odleglosc pomiedzy dwoma punktami a i b
+	 * @param a punkt od ktorego zaczynamy liczyc
+	 * @param b punkt na ktorym konczymy liczyc odleglosc
+	 * @return odleglosc pomiedzy punktami a i b
+	 */
 	public double obliczOdlegloscPomiedzyPunktami(Punkt a, Punkt b) {
 		double p = Math.abs(b.getY() - a.getY());
 		double q = Math.abs(b.getX() - a.getX());
