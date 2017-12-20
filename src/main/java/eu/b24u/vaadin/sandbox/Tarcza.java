@@ -30,19 +30,30 @@ public class Tarcza {
 	/**
 	 * Tarcza kolorowa na ktorej rysujemy strzale
 	 * 
-	 * @param plotno to plansza na ktorej rysujemy objekt np. tarcza<br>
-	 * X i Y to wspolrzedne gdzie ma byc narysowana tarcza.
-	 * @param x to wspolrzedna pozioma 
-	 * @param y to wspolrzedna pionowa
+	 * @param plotno
+	 *            to plansza na ktorej rysujemy objekt np. tarcza<br>
+	 *            X i Y to wspolrzedne gdzie ma byc narysowana tarcza.
+	 * @param x
+	 *            to wspolrzedna pozioma
+	 * @param y
+	 *            to wspolrzedna pionowa
 	 */
 	public Tarcza(Plotno plotno, int x, int y) {
 		setX(x);
 		setY(y);
 		plotno.rysujKolo(x, y, 200, Color.BLUE);
+
 		plotno.rysujKolo(x, y, 150, Color.WHITE);
 		plotno.rysujKolo(x, y, 100, Color.RED);
 		plotno.rysujKolo(x, y, 50, Color.WHITE);
-		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> plotno.rysujOkrag(plotno.pobierzKliknietyPunkt(), 3));
+		plotno.wstawText(new Punkt(x + 50, y), "80", Color.BLACK);
+		plotno.wstawText(new Punkt(x - 20, y - 60), "80", Color.BLACK);
+		plotno.wstawText(new Punkt(x - 25, y + 10), "100", Color.BLACK);
+		plotno.wstawText(new Punkt(x + -90, y), "80", Color.BLACK);
+		plotno.wstawText(new Punkt(x + 50, y), "80", Color.BLACK);
+		plotno.wstawText(new Punkt(x - 20, y + 80), "80", Color.BLACK);
+		// plotno.dodajZdarzenieNaKlikniecieMyszka(e ->
+		// plotno.rysujOkrag(plotno.pobierzKliknietyPunkt(), 3));
 	}
 
 	public void przedstawSie() {
@@ -50,8 +61,10 @@ public class Tarcza {
 	}
 
 	/**
-	 * Obliczanie odleglosci od srodka tarczy          
-	 * @param s to wspolrzedna punktu od ktorego liczymy odleglosc
+	 * Obliczanie odleglosci od srodka tarczy
+	 * 
+	 * @param s
+	 *            to wspolrzedna punktu od ktorego liczymy odleglosc
 	 * @return odleglosc punktu s od srodka tarczy
 	 */
 	public double obliczOdlegloscOdSrodka(Punkt s) {
@@ -60,8 +73,11 @@ public class Tarcza {
 
 	/**
 	 * Oblicza odleglosc pomiedzy dwoma punktami a i b
-	 * @param a punkt od ktorego zaczynamy liczyc
-	 * @param b punkt na ktorym konczymy liczyc odleglosc
+	 * 
+	 * @param a
+	 *            punkt od ktorego zaczynamy liczyc
+	 * @param b
+	 *            punkt na ktorym konczymy liczyc odleglosc
 	 * @return odleglosc pomiedzy punktami a i b
 	 */
 	public double obliczOdlegloscPomiedzyPunktami(Punkt a, Punkt b) {

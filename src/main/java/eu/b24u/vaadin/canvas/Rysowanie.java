@@ -14,10 +14,10 @@ public interface Rysowanie {
 		drawCircle(p, r, null);
 	}
 
-  default public void rysujOkrag(int x, int y, int r){
+	default public void rysujOkrag(int x, int y, int r) {
 		drawCircle(new Point(x, y), r, null);
-  }
-  
+	}
+
 	default public void rysujTrojkat(Punkt a, Punkt b, Punkt c) {
 		drawTriangle(a, b, c, null);
 	}
@@ -26,50 +26,87 @@ public interface Rysowanie {
 		drawTriangle(a, b, c, color);
 	}
 
+	/**
+	 * Rysuj koło rysuje koło
+	 * 
+	 * @param x
+	 *            to współrzędna pozioma
+	 * @param y
+	 *            to współrzędna pionowa
+	 * @param r
+	 *            to promień
+	 * @param color
+	 *            to kolor
+	 */
 	default public void rysujKolo(int x, int y, int r, Color color) {
 		drawCircle(new Point(x, y), r, color);
 	}
 
 	public void drawCircle(Point s, int r, Color color);
 
-  default public Punkt pobierzKliknietyPunkt(){
-    return (Punkt) getClickPoint();
-  }
-  
-  public Point getClickPoint();
-
-  /**
-   * Przepis na wstawText to wez punki i wstaw tam napis
-   * @param p to punkt
-   * @param text to napis ktory ma byc wstawiony
-   */
-	default public void wstawText(Punkt p, String text) {
-		insertText(p, text);
+	default public Punkt pobierzKliknietyPunkt() {
+		return (Punkt) getClickPoint();
 	}
 
-	public void insertText(Point p, String text);
-  
-  default public void rysujLinie(int x1, int y1,int x2, int y2){
+	public Point getClickPoint();
+
+	/**
+	 * Przepis na wstawText to wez punki i wstaw tam napis
+	 * 
+	 * @param p
+	 *            to punkt
+	 * @param text
+	 *            to napis ktory ma byc wstawiony
+	 * @param color
+	 *            to kolor
+	 */
+	default public void wstawText(Punkt p, String text, Color color) {
+		insertText(p, text, color);
+	}
+
+	/**
+	 * Przepis na wstawText to wez punki i wstaw tam napis - domyslny kolor to bialy
+	 * 
+	 * @param p
+	 *            to punkt
+	 * @param text
+	 *            to napis ktory ma byc wstawiony
+	 */
+	default public void wstawText(Punkt p, String text) {
+		insertText(p, text, Color.WHITE);
+	}
+
+	public void insertText(Point p, String text, Color color);
+
+	default public void rysujLinie(int x1, int y1, int x2, int y2) {
 		drawLine(new Point(x1, y1), new Point(x2, y2), null);
 	}
 
 	default public void rysujLinie(int x1, int y1, int x2, int y2, Color color) {
 		drawLine(new Point(x1, y1), new Point(x2, y2), color);
-  }
-  
+	}
+
 	default public void rysujLinie(Point a, Point b, Color color) {
 		drawLine(a, b, color);
 	}
+
 	/**
-	 * Do narysowania prostokąta wystarcza dwa punkty. <br>Na podstawie przekatnej prostokata od punktu a do punktu b rysujemy prostokat.<br>
-	 *  Kolorujemy go kolorem {@value color}
-	 * @param a to punkt startowy
-	 * @param b to punkt koncowy
-	 * @param kolor jakim kolorujemy
+	 * Do narysowania prostokąta wystarcza dwa punkty. <br>
+	 * Na podstawie przekatnej prostokata od punktu a do punktu b rysujemy
+	 * prostokat.<br>
+	 * Kolorujemy go kolorem {@value color}
+	 * 
+	 * @param a
+	 *            to punkt startowy
+	 * @param b
+	 *            to punkt koncowy
+	 * @param kolor
+	 *            jakim kolorujemy
 	 */
 	default public void rysujProstokat(Point a, Point b, Color kolor) {
 		drawRectangle(a, b, kolor);
 	}
+
 	public void drawTriangle(Point a, Point b, Point c, Color color);
 
 	public void drawLine(Point a, Point b, Color color);

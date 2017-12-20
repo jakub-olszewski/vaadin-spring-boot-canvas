@@ -88,9 +88,13 @@ public class Plotno extends Canvas implements Rysowanie {
 	}
 
 	@Override
-	public void insertText(Point p, String text) {
+	public void insertText(Point p, String text, Color color) {
+
+		beginPath();
 		setFont("30px Arial");
 		fillText(text, p.getX(), p.getY(), 200);
+		fillColor(color);
+		stroke();
 	}
 
 	@Override

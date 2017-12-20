@@ -79,14 +79,13 @@ public class MyUI extends UI {
 		verticalLayout.addComponent(plotno);
 		setContent(verticalLayout);
 
-		menu.addItem("Rysuj trójkąt", e -> plotno.rysujOkrag(100, 100, 50));
-		menu.addItem("Rysuj linie", null);
+		menu.addItem("Rozpocznij grę", null);
 		menu.setSizeFull();
-		
+		menu.addItem("Wyjdź", e -> plotno.clear());
+
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
-		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
-		
+		plotno.wstawText(new Punkt(50, 50), "Gra lotki !", Color.WHITE);
 
 		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
@@ -106,10 +105,10 @@ public class MyUI extends UI {
 			// wstawia tekst "Liczba punktów"
 
 			int punkty = 0;
-			
+
 			new Strzala(plotno, kliknietyPunkt);
 			if (odleglosc < 200) {
-				//wykonaj kiedy odleglosc jest mniejsz niż 200
+				// wykonaj kiedy odleglosc jest mniejsz niż 200
 			} else {
 				Notification.show("nie trafiony");
 			}
@@ -122,6 +121,17 @@ public class MyUI extends UI {
 				Notification.show("Brawo trafiłes w czerwony krąg !!!");
 				punkty = 80;
 			}
+
+			if (odleglosc > 100 && odleglosc < 150) {
+				Notification.show("Brawo trafiłes w biały krąg !!!");
+				punkty = 60;
+			}
+
+			if (odleglosc > 150 && odleglosc < 200) {
+				Notification.show("Brawo trafiłes w niebieski krąg !!!");
+				punkty = 40;
+			}
+
 			System.out.println("odleglosc=" + odleglosc);
 			// licznikPunktow=licznikPunktow+punkty;
 			licznikPunktow += punkty;
@@ -130,9 +140,8 @@ public class MyUI extends UI {
 		});
 	}
 
-	
-	public void wypiszOdlegloscOdSrodkaTarczy(Tarcza kolorowaTarcza,int x, int y) {
-		double odleglosc=kolorowaTarcza.obliczOdlegloscOdSrodka(new Punkt (x,y));
-		System.out.println("odleglosc="+odleglosc);
+	public void wypiszOdlegloscOdSrodkaTarczy(Tarcza kolorowaTarcza, int x, int y) {
+		double odleglosc = kolorowaTarcza.obliczOdlegloscOdSrodka(new Punkt(x, y));
+		System.out.println("odleglosc=" + odleglosc);
 	}
 }
