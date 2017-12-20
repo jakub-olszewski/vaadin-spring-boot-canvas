@@ -79,7 +79,10 @@ public class MyUI extends UI {
 		verticalLayout.addComponent(plotno);
 		setContent(verticalLayout);
 
-		menu.addItem("Rozpocznij grę", null);
+		/**
+		 * Rozpocznij grę, od razu resetuje licznik punktów
+		 */
+		menu.addItem("Rozpocznij grę", e -> licznikPunktow = 0);
 		menu.setSizeFull();
 		menu.addItem("Wyjdź", e -> plotno.clear());
 
