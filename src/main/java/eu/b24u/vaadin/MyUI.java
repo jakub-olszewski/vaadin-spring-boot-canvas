@@ -56,9 +56,15 @@ public class MyUI extends UI {
 	@Autowired
 	SpringViewProvider viewProvider;
 
+	int licznikPunktow;
+
+	/**
+	 * stworz/zainicjuj,metoda wykonywana jako pierwsza
+	 */
 	@Override
 	protected void init(VaadinRequest request) {
 
+		licznikPunktow = 0;
 		Plotno plotno = new Plotno();
 
 		MenuBar menu = new MenuBar();
@@ -81,6 +87,7 @@ public class MyUI extends UI {
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
 		
+
 		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
 			// czysci plotno
@@ -116,7 +123,9 @@ public class MyUI extends UI {
 				punkty = 80;
 			}
 			System.out.println("odleglosc=" + odleglosc);
-			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + punkty);
+			// licznikPunktow=licznikPunktow+punkty;
+			licznikPunktow += punkty;
+			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + licznikPunktow);
 
 		});
 	}

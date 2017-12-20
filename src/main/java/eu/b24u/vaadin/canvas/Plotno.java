@@ -10,6 +10,13 @@ import org.vaadin.hezamu.canvas.Canvas;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.ui.colorpicker.Color;
 
+/**
+ * jest to miejsce na którym rysujemy i zajmuje ono całe okno przeglądarki <br>
+ * na płótnie rysowana jest tarcza oraz punkty
+ * 
+ * @author student
+ *
+ */
 public class Plotno extends Canvas implements Rysowanie {
 
 	List<Punkt> punkty;
