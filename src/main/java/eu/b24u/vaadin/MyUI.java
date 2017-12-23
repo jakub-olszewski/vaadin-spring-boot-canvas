@@ -29,6 +29,8 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
+import eu.b24u.vaadin.canvas.utils.Stoper;
 import eu.b24u.vaadin.canvas.Plotno;
 import eu.b24u.vaadin.canvas.Punkt;
 import eu.b24u.vaadin.sandbox.Strzala;
@@ -57,13 +59,14 @@ public class MyUI extends UI {
 	SpringViewProvider viewProvider;
 
 	int licznikPunktow;
-
+	Stoper czasomierz;
+    String imieZawodnika;
 	/**
 	 * stworz/zainicjuj,metoda wykonywana jako pierwsza
 	 */
 	@Override
 	protected void init(VaadinRequest request) {
-
+  czasomierz=new Stoper("czasomierz");
 		licznikPunktow = 0;
 		Plotno plotno = new Plotno();
 
@@ -82,10 +85,21 @@ public class MyUI extends UI {
 		/**
 		 * Rozpocznij grę, od razu resetuje licznik punktów
 		 */
-		menu.addItem("Rozpocznij grę", e -> licznikPunktow = 0);
-		menu.setSizeFull();
+		menu.addItem("Rozpocznij grę", e -> {
+			licznikPunktow = 0;
+			OknoWpiszImie oknoDowpisaniaImienia= new OknoWpiszImie(imieZawodnika);
+					});
 		menu.addItem("Wyjdź", e -> plotno.clear());
-
+		menu.addItem("Start", e -> czasomierz.start());
+		menu.addItem("Stop", e -> czasomierz.stop());
+		menu.addItem("Twój czas", e -> {
+			Notification.show(czasomierz.wypiszCzas());
+		});
+		menu.addItem("Wypisz imię", e -> {
+			Notification.show(imieZawodnika);
+		});
+		menu.setSizeFull();
+		
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !", Color.WHITE);
@@ -113,25 +127,25 @@ public class MyUI extends UI {
 			if (odleglosc < 200) {
 				// wykonaj kiedy odleglosc jest mniejsz niż 200
 			} else {
-				Notification.show("nie trafiony");
+				//Notification.show("nie trafiony");
 			}
 			if (odleglosc < 50) {
-				Notification.show("Brawo sam środek !!!");
+				//Notification.show("Brawo sam środek !!!");
 				punkty = 100;
 			}
 			// znak && oznacza litere 'i'
 			if (odleglosc > 50 && odleglosc < 100) {
-				Notification.show("Brawo trafiłes w czerwony krąg !!!");
+				//Notification.show("Brawo trafiłes w czerwony krąg !!!");
 				punkty = 80;
 			}
 
 			if (odleglosc > 100 && odleglosc < 150) {
-				Notification.show("Brawo trafiłes w biały krąg !!!");
+				//Notification.show("Brawo trafiłes w biały krąg !!!");
 				punkty = 60;
 			}
 
 			if (odleglosc > 150 && odleglosc < 200) {
-				Notification.show("Brawo trafiłes w niebieski krąg !!!");
+				//Notification.show("Brawo trafiłes w niebieski krąg !!!");
 				punkty = 40;
 			}
 
