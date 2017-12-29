@@ -1,6 +1,5 @@
 package eu.b24u.vaadin.pages;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +12,7 @@ public class JavaStartTest {
 	WebDriver driver;
 	Wait<WebDriver> wait;
 
-	@Test
+	// @Test
 	public void userCanSearch() {
 
 		ClassLoader classLoader = getClass().getClassLoader();

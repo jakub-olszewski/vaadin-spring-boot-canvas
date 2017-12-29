@@ -2,10 +2,8 @@ package eu.b24u.selenide;
 
 import static com.codeborne.selenide.Selenide.open;
 
-import org.junit.Test;
-
 public class JavaStartTest {
-	@Test
+	// @Test
 	public void userCanSearch() {
 
 		ClassLoader classLoader = getClass().getClassLoader();
