@@ -4,13 +4,11 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
-import org.junit.Test;
-
 import eu.b24u.selenide.pages.GooglePage;
 import eu.b24u.selenide.pages.SearchResultsPage;
 
 public class GoogleTest {
-	@Test
+	// @Test
 	public void userCanSearch() {
 
 		ClassLoader classLoader = getClass().getClassLoader();
