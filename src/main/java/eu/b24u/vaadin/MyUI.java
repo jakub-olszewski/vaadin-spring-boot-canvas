@@ -88,7 +88,7 @@ public class MyUI extends UI {
 		 */
 		menu.addItem("Rozpocznij grę", e -> {
 			licznikPunktow = 0;
-			sumaWylosowanychPunktow = 999;// TODO tutaj należy wstawić sumę wylosowanych punktów
+			sumaWylosowanychPunktow = 240;// TODO tutaj należy wstawić sumę wylosowanych punktów
 
 			OknoWpiszImie oknoDowpisaniaImienia= new OknoWpiszImie(imieZawodnika);
 					});
