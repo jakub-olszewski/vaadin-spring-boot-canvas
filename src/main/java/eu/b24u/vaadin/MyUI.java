@@ -29,10 +29,10 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
-import eu.b24u.vaadin.canvas.utils.Stoper;
 import eu.b24u.vaadin.canvas.Plotno;
 import eu.b24u.vaadin.canvas.Punkt;
+import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
+import eu.b24u.vaadin.canvas.utils.Stoper;
 import eu.b24u.vaadin.sandbox.Strzala;
 import eu.b24u.vaadin.sandbox.Tarcza;
 
@@ -59,6 +59,7 @@ public class MyUI extends UI {
 	SpringViewProvider viewProvider;
 
 	int licznikPunktow;
+	int sumaWylosowanychPunktow;
 	Stoper czasomierz;
     String imieZawodnika;
 	/**
@@ -87,6 +88,8 @@ public class MyUI extends UI {
 		 */
 		menu.addItem("Rozpocznij grę", e -> {
 			licznikPunktow = 0;
+			sumaWylosowanychPunktow = 999;// TODO tutaj należy wstawić sumę wylosowanych punktów
+
 			OknoWpiszImie oknoDowpisaniaImienia= new OknoWpiszImie(imieZawodnika);
 					});
 		menu.addItem("Wyjdź", e -> plotno.clear());
@@ -103,6 +106,7 @@ public class MyUI extends UI {
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !", Color.WHITE);
+
 
 		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
@@ -153,7 +157,7 @@ public class MyUI extends UI {
 			// licznikPunktow=licznikPunktow+punkty;
 			licznikPunktow += punkty;
 			plotno.wstawText(new Punkt(50, 550), "Liczba punktów:" + licznikPunktow);
-
+			plotno.wstawText(new Punkt(71, 466), "Zbierz:" + sumaWylosowanychPunktow);
 		});
 	}
 

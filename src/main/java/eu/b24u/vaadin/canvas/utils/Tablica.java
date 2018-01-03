@@ -49,7 +49,7 @@ public class Tablica extends ArrayList<Integer> {
 	 *            najwieksza liczba calkowita jaka moze sie wylosowac.
 	 * @return liczba z przedzialu od min do max
 	 */
-	private int losujLiczbeZPrzedzialu(int min, int max) {
+	public int losujLiczbeZPrzedzialu(int min, int max) {
 		return new Random().ints(min, max + 1).findFirst().getAsInt();
 	}
 
@@ -85,6 +85,10 @@ public class Tablica extends ArrayList<Integer> {
 		wylosowanaLiczba = tablicaPunktow.losujLiczbe();
 		sumaPunktow += wylosowanaLiczba;
 		tablicaPunktow.wypisz(sumaPunktow);
+
+		int wylosowanaOsoba = tablicaPunktow.losujLiczbeZPrzedzialu(1, 7);
+		tablicaPunktow.wypisz(wylosowanaOsoba);
+
 	}
 
 }
