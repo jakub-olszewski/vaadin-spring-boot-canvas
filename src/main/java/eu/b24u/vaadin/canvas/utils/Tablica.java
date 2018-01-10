@@ -86,7 +86,7 @@ public class Tablica extends ArrayList<Integer> {
 		sumaPunktow += wylosowanaLiczba;
 		tablicaPunktow.wypisz(sumaPunktow);
 
-		int wylosowanaOsoba = tablicaPunktow.losujLiczbeZPrzedzialu(1, 7);
+		int wylosowanaOsoba = tablicaPunktow.losujLiczbeZPrzedzialu(1, 6);
 		tablicaPunktow.wypisz(wylosowanaOsoba);
 
 	}

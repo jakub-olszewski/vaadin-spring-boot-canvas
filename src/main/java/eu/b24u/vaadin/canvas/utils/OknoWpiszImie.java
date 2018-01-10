@@ -41,6 +41,7 @@ public class OknoWpiszImie extends Okno {
 			public void zdarzenieNaKlikniecie(ClickEvent klikniecie) {
 				String imieGracza = imiePoleTekstowe.pobierzTekst();
 				Powiadomienie.wyswietl("Cześć " + imieGracza + " witaj w grze");
+				zamknijOkno();
 			}
 
 		});

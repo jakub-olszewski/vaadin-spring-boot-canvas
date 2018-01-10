@@ -9,7 +9,11 @@ import com.vaadin.ui.Button;
  *
  */
 public class Przycisk extends Button {
-
+	/**
+	 * metoda dodaje zdarzenie ktoree ma sie wykonac po kliknieciu w przycisk
+	 * 
+	 * @param listener
+	 */
 	public void dodajZdarzenie(ClickListener listener) {
 		addClickListener(listener);
 	}
