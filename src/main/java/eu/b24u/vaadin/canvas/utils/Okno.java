@@ -15,14 +15,31 @@ public class Okno extends Window {
 		UI.getCurrent().addWindow(this);
 	}
 
+	/**
+	 * metoda ustawia wysokosc
+	 * 
+	 * @param wysokoscWPikselach
+	 *            wysokosc podana w pikselach
+	 */
 	public void ustawWysokosc(int wysokoscWPikselach) {
 		setHeight(wysokoscWPikselach, Unit.PIXELS);
 	}
 
+	/**
+	 * metoda ustawia szerokosc
+	 * 
+	 * @param szerokoscWPikselach
+	 */
 	public void ustawSzerokosc(int szerokoscWPikselach) {
 		setWidth(szerokoscWPikselach, Unit.PIXELS);
 	}
 
+	/**
+	 * metoda dodaje komponent
+	 * 
+	 * @param component
+	 *            to obiekt typu np. pole tekstowe lub przycisk
+	 */
 	public void dodajKomponent(Component component) {
 		layout.addComponent(component);
 	}
