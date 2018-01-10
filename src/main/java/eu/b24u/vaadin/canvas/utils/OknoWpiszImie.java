@@ -1,42 +1,36 @@
 package eu.b24u.vaadin.canvas.utils;
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
 
-public class OknoWpiszImie extends Window {
+import eu.b24u.vaadin.components.PoleTekstowe;
+import eu.b24u.vaadin.components.Powiadomienie;
+import eu.b24u.vaadin.components.Przycisk;
+import eu.b24u.vaadin.listener.SluchaczKlikniecia;
 
-	String imieZawodnika;
+public class OknoWpiszImie extends Okno {
 
-	public String getImieZawodnika() {
-		return imieZawodnika;
-	}
-
-	public void setImieZawodnika(String imieZawodnika) {
-		this.imieZawodnika = imieZawodnika;
-	}
-
-	public OknoWpiszImie(String imieZawodnika) {
+	public OknoWpiszImie() {
 		super();
-		this.imieZawodnika = imieZawodnika;
-		init();
-		UI.getCurrent().addWindow(this);
+		buduj();
 	}
 
-	private void init() {
-		center();
-		FormLayout layout = new FormLayout();
-		layout.setMargin(true);
-		TextField imieTextField = new TextField();
-		layout.addComponent(imieTextField);
-		Button potwierdz = new Button("Zatwierdź", e -> {
-			setImieZawodnika(imieTextField.getValue());
-			close();
+	private void buduj() {
+		ustawWysokosc(400);
+		ustawSzerokosc(800);
+		PoleTekstowe imiePoleTekstowe = new PoleTekstowe();
+		imiePoleTekstowe.dodajNaglowek("imie");
+		dodajKomponent(imiePoleTekstowe);
+		Przycisk zatwierdzPrzycisk = new Przycisk();
+		zatwierdzPrzycisk.dodajNaglowek("Zatwierdz");
+		zatwierdzPrzycisk.dodajZdarzenie(new SluchaczKlikniecia() {
+
+			@Override
+			public void zdarzenieNaKlikniecie(ClickEvent klikniecie) {
+				Powiadomienie.wyswietl("klikniety przycisk");
 			}
-		) ;
-		layout.addComponent(potwierdz);
-		setContent(layout);
+
+		});
+		dodajKomponent(zatwierdzPrzycisk);
 	}
+
 }

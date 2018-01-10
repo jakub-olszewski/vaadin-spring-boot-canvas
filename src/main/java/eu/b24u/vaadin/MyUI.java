@@ -90,7 +90,7 @@ public class MyUI extends UI {
 			licznikPunktow = 0;
 			sumaWylosowanychPunktow = 240;// TODO tutaj należy wstawić sumę wylosowanych punktów
 
-			OknoWpiszImie oknoDowpisaniaImienia= new OknoWpiszImie(imieZawodnika);
+			OknoWpiszImie oknoDowpisaniaImienia = new OknoWpiszImie();
 					});
 		menu.addItem("Wyjdź", e -> plotno.clear());
 		menu.addItem("Start", e -> czasomierz.start());
