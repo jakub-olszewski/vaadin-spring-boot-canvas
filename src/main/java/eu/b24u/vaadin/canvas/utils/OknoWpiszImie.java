@@ -26,8 +26,8 @@ public class OknoWpiszImie extends Okno {
 	 * buduje nam okno w ktorym jest pole tekstowe i przycisk
 	 */
 	private void buduj() {
-		ustawWysokosc(400);
-		ustawSzerokosc(800);
+		ustawWysokosc(150);
+		ustawSzerokosc(375);
 		PoleTekstowe imiePoleTekstowe = new PoleTekstowe();
 		// imiePoleTekstowe to nazwa zmiennej typu / rodzaju PoleTekstowe
 		imiePoleTekstowe.wstawPodpowiedz("tutaj wpisz imię");

@@ -15,6 +15,10 @@ public class Okno extends Window {
 		UI.getCurrent().addWindow(this);
 	}
 
+	public void zamknijOkno() {
+		close();
+	}
+
 	/**
 	 * metoda ustawia wysokosc
 	 * 
