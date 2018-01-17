@@ -11,7 +11,7 @@ public class LosowanieDoTablicyTest {
 	public void losowanie() {
 		Tablica tablicaNumerkow = new Tablica();
 
-		int wylosowanaOsoba = tablicaNumerkow.losujLiczbeZPrzedzialu(1, 6);
+		int wylosowanaOsoba = tablicaNumerkow.losujLiczbeZPrzedzialu(1, 5);
 		tablicaNumerkow.wypisz(wylosowanaOsoba);
 		Assert.assertTrue(true);
 	}

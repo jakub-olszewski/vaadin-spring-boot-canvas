@@ -10,8 +10,23 @@ package eu.b24u.vaadin.canvas.utils;
 public class PamiecGry {
 	// to jest klasa w kotrej mozemy napisac pole i metody
 	// pole jest to zmienna badz zmienne np. tekst lub liczba
+	/**
+	 * jest to część kodu do tworzenia/konstruowania pamięci gry
+	 * 
+	 * @param listaGraczy
+	 */
+	public PamiecGry() {
+		ustawListaGraczy(new ListaGraczy());
+	}
 
 	ListaGraczy listaGraczy;
-	// potrzebujemy metod: wypiszListeGraczyzPunktami
-	// PosortujOdNajlepszegoListeGraczy
+
+	public ListaGraczy pobierzListaGraczy() {
+		return listaGraczy;
+	}
+
+	public void ustawListaGraczy(ListaGraczy listaGraczy) {
+		this.listaGraczy = listaGraczy;
+	}
+
 }

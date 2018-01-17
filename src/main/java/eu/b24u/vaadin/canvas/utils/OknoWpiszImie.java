@@ -17,15 +17,17 @@ public class OknoWpiszImie extends Okno {
 	/**
 	 * konstruktor - glowna metoda ktora buduje okno
 	 */
-	public OknoWpiszImie() {
+	public OknoWpiszImie(PamiecGry pamiecGry) {
 		super();// wykonanie wczesniej napisanych metod
-		buduj();
+		buduj(pamiecGry);
 	}
 
 	/**
 	 * buduje nam okno w ktorym jest pole tekstowe i przycisk
+	 * 
+	 * @param pamiecGry
 	 */
-	private void buduj() {
+	private void buduj(PamiecGry pamiecGry) {
 		ustawWysokosc(150);
 		ustawSzerokosc(375);
 		PoleTekstowe imiePoleTekstowe = new PoleTekstowe();
@@ -40,6 +42,9 @@ public class OknoWpiszImie extends Okno {
 			@Override
 			public void zdarzenieNaKlikniecie(ClickEvent klikniecie) {
 				String imieGracza = imiePoleTekstowe.pobierzTekst();
+				Gracz nowyGracz = new Gracz();
+				nowyGracz.ustawImieGracza(imieGracza);
+				pamiecGry.pobierzListaGraczy().dodajGracza(nowyGracz);
 				Powiadomienie.wyswietl("Cześć " + imieGracza + " witaj w grze");
 				zamknijOkno();
 			}

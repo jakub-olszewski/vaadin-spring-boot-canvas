@@ -32,6 +32,7 @@ import com.vaadin.ui.VerticalLayout;
 import eu.b24u.vaadin.canvas.Plotno;
 import eu.b24u.vaadin.canvas.Punkt;
 import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
+import eu.b24u.vaadin.canvas.utils.PamiecGry;
 import eu.b24u.vaadin.canvas.utils.Stoper;
 import eu.b24u.vaadin.sandbox.Strzala;
 import eu.b24u.vaadin.sandbox.Tarcza;
@@ -57,17 +58,20 @@ public class MyUI extends UI {
 
 	@Autowired
 	SpringViewProvider viewProvider;
-
+	PamiecGry pamiecGry;
+	// TODO poniższe pola przenieść do Pamięci Gry
 	int licznikPunktow;
 	int sumaWylosowanychPunktow;
 	Stoper czasomierz;
-    String imieZawodnika;
+	String imieZawodnika;
+
 	/**
 	 * stworz/zainicjuj,metoda wykonywana jako pierwsza
 	 */
 	@Override
 	protected void init(VaadinRequest request) {
-  czasomierz=new Stoper("czasomierz");
+		czasomierz = new Stoper("czasomierz");
+		pamiecGry = new PamiecGry();
 		licznikPunktow = 0;
 		Plotno plotno = new Plotno();
 
@@ -90,8 +94,8 @@ public class MyUI extends UI {
 			licznikPunktow = 0;
 			sumaWylosowanychPunktow = 240;// TODO tutaj należy wstawić sumę wylosowanych punktów
 
-			OknoWpiszImie oknoDowpisaniaImienia = new OknoWpiszImie();
-					});
+			OknoWpiszImie oknoDowpisaniaImienia = new OknoWpiszImie(pamiecGry);
+		});
 		menu.addItem("Wyjdź", e -> plotno.clear());
 		menu.addItem("Start", e -> czasomierz.start());
 		menu.addItem("Stop", e -> czasomierz.stop());
@@ -102,11 +106,10 @@ public class MyUI extends UI {
 			Notification.show(imieZawodnika);
 		});
 		menu.setSizeFull();
-		
+
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !", Color.WHITE);
-
 
 		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
@@ -131,25 +134,25 @@ public class MyUI extends UI {
 			if (odleglosc < 200) {
 				// wykonaj kiedy odleglosc jest mniejsz niż 200
 			} else {
-				//Notification.show("nie trafiony");
+				// Notification.show("nie trafiony");
 			}
 			if (odleglosc < 50) {
-				//Notification.show("Brawo sam środek !!!");
+				// Notification.show("Brawo sam środek !!!");
 				punkty = 100;
 			}
 			// znak && oznacza litere 'i'
 			if (odleglosc > 50 && odleglosc < 100) {
-				//Notification.show("Brawo trafiłes w czerwony krąg !!!");
+				// Notification.show("Brawo trafiłes w czerwony krąg !!!");
 				punkty = 80;
 			}
 
 			if (odleglosc > 100 && odleglosc < 150) {
-				//Notification.show("Brawo trafiłes w biały krąg !!!");
+				// Notification.show("Brawo trafiłes w biały krąg !!!");
 				punkty = 60;
 			}
 
 			if (odleglosc > 150 && odleglosc < 200) {
-				//Notification.show("Brawo trafiłes w niebieski krąg !!!");
+				// Notification.show("Brawo trafiłes w niebieski krąg !!!");
 				punkty = 40;
 			}
 
