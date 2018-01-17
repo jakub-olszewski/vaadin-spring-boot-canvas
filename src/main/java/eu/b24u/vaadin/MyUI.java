@@ -34,6 +34,7 @@ import eu.b24u.vaadin.canvas.Punkt;
 import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
 import eu.b24u.vaadin.canvas.utils.PamiecGry;
 import eu.b24u.vaadin.canvas.utils.Stoper;
+import eu.b24u.vaadin.components.Powiadomienie;
 import eu.b24u.vaadin.sandbox.Strzala;
 import eu.b24u.vaadin.sandbox.Tarcza;
 
@@ -103,7 +104,12 @@ public class MyUI extends UI {
 			Notification.show(czasomierz.wypiszCzas());
 		});
 		menu.addItem("Wypisz imię", e -> {
-			Notification.show(imieZawodnika);
+			// pobranie pamiecGry
+			// pobieramy z pamieciGry liste graczy
+			// z listy graczy pobieramy gracza
+			// z gracza pobieramy jego imie
+			// wyswietlamy imie gracza
+			Powiadomienie.wyswietl("Tutaj ma byc imie wpisanego gracza !");
 		});
 		menu.setSizeFull();
 
