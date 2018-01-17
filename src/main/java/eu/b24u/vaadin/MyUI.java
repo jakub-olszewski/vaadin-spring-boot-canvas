@@ -31,6 +31,8 @@ import com.vaadin.ui.VerticalLayout;
 
 import eu.b24u.vaadin.canvas.Plotno;
 import eu.b24u.vaadin.canvas.Punkt;
+import eu.b24u.vaadin.canvas.utils.Gracz;
+import eu.b24u.vaadin.canvas.utils.ListaGraczy;
 import eu.b24u.vaadin.canvas.utils.OknoWpiszImie;
 import eu.b24u.vaadin.canvas.utils.PamiecGry;
 import eu.b24u.vaadin.canvas.utils.Stoper;
@@ -106,10 +108,14 @@ public class MyUI extends UI {
 		menu.addItem("Wypisz imię", e -> {
 			// pobranie pamiecGry
 			// pobieramy z pamieciGry liste graczy
+			ListaGraczy gracze = pamiecGry.pobierzListaGraczy();
+
 			// z listy graczy pobieramy gracza
+			Gracz pobranyGracz = gracze.pobierzPierwszegoGracza();
 			// z gracza pobieramy jego imie
+			String imieGracza = pobranyGracz.pobierzImieGracza();
 			// wyswietlamy imie gracza
-			Powiadomienie.wyswietl("Tutaj ma byc imie wpisanego gracza !");
+			Powiadomienie.wyswietl(imieGracza);
 		});
 		menu.setSizeFull();
 
