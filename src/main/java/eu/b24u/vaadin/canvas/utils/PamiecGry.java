@@ -10,10 +10,8 @@ package eu.b24u.vaadin.canvas.utils;
 public class PamiecGry {
 	// to jest klasa w kotrej mozemy napisac pole i metody
 	// pole jest to zmienna badz zmienne np. tekst lub liczba
-	String imieGracza;
-	int punkty;
-	double czas;
-	Lista listaGraczy;
+
+	ListaGraczy listaGraczy;
 	// potrzebujemy metod: wypiszListeGraczyzPunktami
 	// PosortujOdNajlepszegoListeGraczy
 }

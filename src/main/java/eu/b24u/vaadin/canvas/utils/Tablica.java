@@ -63,32 +63,4 @@ public class Tablica extends ArrayList<Integer> {
 		System.out.println("Liczba " + liczba);
 	}
 
-	/**
-	 * Test
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Tablica tablicaPunktow = new Tablica();
-		tablicaPunktow.dodajLiczbe(40);
-		tablicaPunktow.dodajLiczbe(60);
-		tablicaPunktow.dodajLiczbe(80);
-		tablicaPunktow.dodajLiczbe(100);
-		int wylosowanaLiczba; // tworzenie zmiennej o nazwie wylosowana liczba
-		wylosowanaLiczba = tablicaPunktow.losujLiczbe();
-		// tablicaPunktow.wypisz(wylosowanaLiczba);
-		int sumaPunktow = 0;
-		sumaPunktow = wylosowanaLiczba;
-		wylosowanaLiczba = tablicaPunktow.losujLiczbe();
-		// sumaPunktow=sumaPunktow+wylosowanaLiczba;
-		sumaPunktow += wylosowanaLiczba;// zwiekszenie sumy punktow o wylosowana liczbe
-		wylosowanaLiczba = tablicaPunktow.losujLiczbe();
-		sumaPunktow += wylosowanaLiczba;
-		tablicaPunktow.wypisz(sumaPunktow);
-
-		int wylosowanaOsoba = tablicaPunktow.losujLiczbeZPrzedzialu(1, 6);
-		tablicaPunktow.wypisz(wylosowanaOsoba);
-
-	}
-
 }
