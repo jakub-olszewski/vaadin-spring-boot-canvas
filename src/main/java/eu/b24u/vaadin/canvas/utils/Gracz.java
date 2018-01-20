@@ -13,4 +13,12 @@ public class Gracz {
 
 	int punkty;
 	double czas;
+
+	/**
+	 * Zamiana gracza na napis
+	 */
+	@Override
+	public String toString() {
+		return "Gracz [imieGracza=" + imieGracza + ", punkty=" + punkty + ", czas=" + czas + "]";
+	}
 }

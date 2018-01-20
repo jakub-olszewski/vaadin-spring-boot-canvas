@@ -61,7 +61,7 @@ public class MyUI extends UI {
 
 	@Autowired
 	SpringViewProvider viewProvider;
-	PamiecGry pamiecGry;
+	static PamiecGry pamiecGry;
 	// TODO poniższe pola przenieść do Pamięci Gry
 	int licznikPunktow;
 	int sumaWylosowanychPunktow;
@@ -117,6 +117,12 @@ public class MyUI extends UI {
 			// wyswietlamy imie gracza
 			Powiadomienie.wyswietl(imieGracza);
 		});
+		menu.addItem("Lista graczy", e -> {
+			ListaGraczy gracze = pamiecGry.pobierzListaGraczy();
+			Powiadomienie.wyswietl(gracze.toString());
+
+		});
+
 		menu.setSizeFull();
 
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
