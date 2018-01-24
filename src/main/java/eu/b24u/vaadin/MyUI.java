@@ -97,7 +97,7 @@ public class MyUI extends UI {
 			licznikPunktow = 0;
 			sumaWylosowanychPunktow = 240;// TODO tutaj należy wstawić sumę wylosowanych punktów
 
-			OknoWpiszImie oknoDowpisaniaImienia = new OknoWpiszImie(pamiecGry);
+			OknoWpiszImie oknoDowpisaniaImienia = new OknoWpiszImie(pamiecGry, plotno);
 		});
 		menu.addItem("Wyjdź", e -> plotno.clear());
 		menu.addItem("Start", e -> czasomierz.start());
@@ -128,6 +128,7 @@ public class MyUI extends UI {
 		plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
 		Tarcza kolorowaTarcza = new Tarcza(plotno, 600, 300);
 		plotno.wstawText(new Punkt(50, 50), "Gra lotki !", Color.WHITE);
+		plotno.wstawText(new Punkt(50, 100), "Gracze: ", Color.BLUE);
 
 		// dodanie zdarzenia na klikniecie myszka na plotnie
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
