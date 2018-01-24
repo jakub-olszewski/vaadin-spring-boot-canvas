@@ -134,10 +134,15 @@ public class MyUI extends UI {
 		plotno.dodajZdarzenieNaKlikniecieMyszka(e -> {
 			// czysci plotno
 			plotno.clear();
-			// wstawia tekst "Gra lotki !"
-			plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+
 			// Rysuje prostokat na plotnie
 			plotno.rysujProstokat(new Punkt(0, 0), new Punkt(1000, 600), new Color(0, 191, 255));
+
+			// wstawia tekst "Gra lotki !"
+			plotno.wstawText(new Punkt(50, 50), "Gra lotki !");
+			String imieGracza = pamiecGry.pobierzListaGraczy().pobierzPierwszegoGracza().pobierzImieGracza();
+			plotno.wstawText(new Punkt(169, 50), "Gracze : " + imieGracza);
+
 			// tworzy tarcze na plotnie
 			Tarcza tarcza = new Tarcza(plotno, 600, 300);
 			// pobranie kliknietego punktu na plotnie
