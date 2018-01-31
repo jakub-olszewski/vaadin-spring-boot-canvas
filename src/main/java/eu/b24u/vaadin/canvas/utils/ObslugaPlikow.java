@@ -1,0 +1,53 @@
+package eu.b24u.vaadin.canvas.utils;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+
+public class ObslugaPlikow {
+	Gson gson;
+	
+	public ObslugaPlikow() {
+		gson = new Gson();
+	}
+
+	private String zapiszDoJSON(Object doZamianyWJSON) {
+		return gson.toJson(doZamianyWJSON);
+	}
+
+	private Object odczytajZJSON(String jsonTekst, Class nazwaPlikuClass) {
+		return gson.fromJson(jsonTekst, nazwaPlikuClass);
+	}
+
+	private File pobierzPlik(String sciezkaDoPliku) {
+		File plik = new File(sciezkaDoPliku);
+		return plik;
+	}
+
+	private String pobierzSciezkeDoPlikuZProjektu(String nazwaPliku) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		String path = classLoader.getResource(nazwaPliku).getPath();
+		return path;
+	}
+
+	private void zapiszDoPliku(String tekst, File plikDoZapisu) {
+		try {
+			Files.write(tekst.getBytes(), plikDoZapisu);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String odczytajZPliku(File plikDoOdczytu) {
+		String result = null;
+		try {
+			result = Files.asCharSource(plikDoOdczytu, Charsets.UTF_8).read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+}
