@@ -14,6 +14,13 @@ public class ObslugaPlikow {
 		gson = new Gson();
 	}
 
+	/**
+	 * zapis obiektu do formatu JSONa
+	 * 
+	 * @param to
+	 *            obiekt który zmienimay do formatu JSON
+	 * @return zwraca obiekt w formacie JSON
+	 */
 	public String zapiszDoJSON(Object doZamianyWJSON) {
 		return gson.toJson(doZamianyWJSON);
 	}
@@ -49,6 +56,13 @@ public class ObslugaPlikow {
 		}
 	}
 
+	/**
+	 * metoda ta odczytuje plik
+	 * 
+	 * @param plikDoOdczytu
+	 *            to plik z ktorego odczytujemy dane
+	 * @return zwraca tekst znajdujacy sie w pliku
+	 */
 	public String odczytajZPliku(File plikDoOdczytu) {
 		String result = null;
 		try {
