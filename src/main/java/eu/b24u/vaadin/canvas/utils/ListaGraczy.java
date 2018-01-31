@@ -13,6 +13,10 @@ public class ListaGraczy extends ArrayList<Gracz> {
 
 	private String ZNAK_ENTER = "\n";
 
+	public void wypiszDoKonsoli() {
+		System.out.println(toString());
+	}
+
 	/**
 	 * Zamien obiekt (listaGraczy) na napis
 	 */
