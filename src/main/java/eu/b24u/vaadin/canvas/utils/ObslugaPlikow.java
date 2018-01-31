@@ -14,26 +14,34 @@ public class ObslugaPlikow {
 		gson = new Gson();
 	}
 
-	private String zapiszDoJSON(Object doZamianyWJSON) {
+	public String zapiszDoJSON(Object doZamianyWJSON) {
 		return gson.toJson(doZamianyWJSON);
 	}
 
-	private Object odczytajZJSON(String jsonTekst, Class nazwaPlikuClass) {
+	public Object odczytajZJSON(String jsonTekst, Class nazwaPlikuClass) {
 		return gson.fromJson(jsonTekst, nazwaPlikuClass);
 	}
 
-	private File pobierzPlik(String sciezkaDoPliku) {
+	public File pobierzPlik(String sciezkaDoPliku) {
 		File plik = new File(sciezkaDoPliku);
 		return plik;
 	}
 
-	private String pobierzSciezkeDoPlikuZProjektu(String nazwaPliku) {
+	public String pobierzSciezkeDoPlikuZProjektu(String nazwaPliku) {
 		ClassLoader classLoader = getClass().getClassLoader();
 		String path = classLoader.getResource(nazwaPliku).getPath();
 		return path;
 	}
 
-	private void zapiszDoPliku(String tekst, File plikDoZapisu) {
+	/**
+	 * Metoda do zapisu tekstu do pliku
+	 * 
+	 * @param tekst
+	 *            to tekst ktory zapisyjemy do pliku
+	 * @param plikDoZapisu
+	 *            to plik w ktorym zapisujemy tekst
+	 */
+	public void zapiszDoPliku(String tekst, File plikDoZapisu) {
 		try {
 			Files.write(tekst.getBytes(), plikDoZapisu);
 		} catch (IOException e) {
