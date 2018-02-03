@@ -7,6 +7,12 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 
+/**
+ * klasa obsługująca piki
+ * 
+ * @author Adam
+ *
+ */
 public class ObslugaPlikow {
 	Gson gson;
 	
@@ -29,14 +35,24 @@ public class ObslugaPlikow {
 		return gson.fromJson(jsonTekst, nazwaPlikuClass);
 	}
 
-	public File pobierzPlik(String sciezkaDoPliku) {
-		File plik = new File(sciezkaDoPliku);
+	public Plik pobierzPlik(String sciezkaDoPliku) {
+		Plik plik = new Plik(sciezkaDoPliku);
 		return plik;
 	}
 
+	/**
+	 * Metoda pobiera sciezke do pliku z projektu z katalogu resources
+	 * 
+	 * @param nazwaPliku
+	 *            to nazwa pliku z katalogu
+	 * @return sciezka do pliku z katalogu
+	 */
 	public String pobierzSciezkeDoPlikuZProjektu(String nazwaPliku) {
 		ClassLoader classLoader = getClass().getClassLoader();
 		String path = classLoader.getResource(nazwaPliku).getPath();
+		if (path.startsWith("/")) {
+			path = path.substring(1);
+		}
 		return path;
 	}
 
@@ -49,6 +65,15 @@ public class ObslugaPlikow {
 	 *            to plik w ktorym zapisujemy tekst
 	 */
 	public void zapiszDoPliku(String tekst, File plikDoZapisu) {
+		try {
+			Files.write(tekst.getBytes(), plikDoZapisu);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void zapiszDoPliku(String tekst, String sciezkaDoPliku) {
+		Plik plikDoZapisu = new Plik(sciezkaDoPliku);
 		try {
 			Files.write(tekst.getBytes(), plikDoZapisu);
 		} catch (IOException e) {

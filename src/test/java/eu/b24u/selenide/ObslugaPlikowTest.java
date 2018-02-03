@@ -1,30 +1,41 @@
 package eu.b24u.selenide;
 
-import java.io.File;
-
 import org.junit.Test;
 
 import eu.b24u.tests.utils.Program;
 import eu.b24u.tests.utils.Sprawdz;
 import eu.b24u.vaadin.canvas.utils.Gracz;
 import eu.b24u.vaadin.canvas.utils.ObslugaPlikow;
+import eu.b24u.vaadin.canvas.utils.Plik;
 
+/**
+ * klasa do testowania obsługi plików
+ * 
+ * @author Adam
+ *
+ */
 public class ObslugaPlikowTest {
 
+	String PRZYKLADOWA_ZAWARTOSC_PLIKU = "[{\"imieGracza\":\"Adam\",\"punkty\":0,\"czas\":0.0}]\r\n" + "";
+
+	/**
+	 * @Test jest to adnotacja oznaczajAca testowanie metody poniżej
+	 */
 	@Test
 	public void zapiszDoPliku() {
 		// TypObiektu nazwaObiektu = new TypObiektu();
 		ObslugaPlikow obslugaPlikow = new ObslugaPlikow();
 		// null to pusta wartosc
 		// string to napis
-		String tekstDoPliku = "mmmmmm2";
-		File plikDoZapisu = obslugaPlikow.pobierzPlik("C:\\Users\\student\\Desktop\\dane.json");
+		String sciezkaDoPlikuDataJson = obslugaPlikow.pobierzSciezkeDoPlikuZProjektu("data.json");
+		Program.wypisz(sciezkaDoPlikuDataJson);
+		Plik plikDoZapisu = obslugaPlikow.pobierzPlik(sciezkaDoPlikuDataJson);
 		// aby wywolac metode nalezy uzyc kropki po nazwieObiektu
-		obslugaPlikow.zapiszDoPliku(tekstDoPliku, plikDoZapisu);
+		obslugaPlikow.zapiszDoPliku(PRZYKLADOWA_ZAWARTOSC_PLIKU, plikDoZapisu);
 
-		File plikDoOdczytu = plikDoZapisu;
+		Plik plikDoOdczytu = plikDoZapisu;
 		String tekstZPliku = obslugaPlikow.odczytajZPliku(plikDoOdczytu);
-		Sprawdz.czySaRowne(tekstZPliku, tekstDoPliku, "zapis do pliku nie dziala");
+		Sprawdz.czySaTakieSame(tekstZPliku, PRZYKLADOWA_ZAWARTOSC_PLIKU, "zapis do pliku nie dziala");
 	}
 
 	@Test
@@ -36,6 +47,12 @@ public class ObslugaPlikowTest {
 		String graczWFormacieJSON = obslugaPlikow.zapiszDoJSON(graczJSON);
 		Program.wypisz(graczWFormacieJSON);
 		Sprawdz.czySaRowne(oczekiwanyGraczWFormacieJSON, graczWFormacieJSON, "zapis w postaci JSON nie działa");
+	}
+
+	@Test
+	public void zapisDoPlikuNaPulpicie() {
+		ObslugaPlikow samolot = new ObslugaPlikow();
+		samolot.zapiszDoPliku("pociAg lata autem", "C:\\Users\\Adam\\Desktop\\Angry Birds Breakfast 1.lnk");
 	}
 
 }

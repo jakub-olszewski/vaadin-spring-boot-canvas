@@ -16,4 +16,20 @@ public class Sprawdz {
 	public static void czySaRowne(String wartoscOczekiwana, String wartosc, String wiadomosc) {
 		assertEquals(wiadomosc, wartoscOczekiwana, wartosc);
 	}
+
+	/**
+	 * metoda sprawda czy wartosc oczekiwana jest rowna wartosci
+	 * 
+	 * @param wartoscOczekiwana
+	 *            to wartosc ktorej oczekujemy
+	 * @param wartosc
+	 *            porownywana z wartosciaOczekiwana
+	 * @param wiadomosc
+	 *            to tekst wyswietlony w trakcie niepowodzenia, czyli wtedy kiedy
+	 *            wartosc i wartoscOczekiwana nie sa takie same
+	 */
+	public static void czySaTakieSame(String wartoscOczekiwana, String wartosc, String wiadomosc) {
+		assertEquals(wiadomosc, wartoscOczekiwana, wartosc);
+	}
+
 }
