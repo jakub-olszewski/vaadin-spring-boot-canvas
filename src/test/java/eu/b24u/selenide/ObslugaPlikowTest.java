@@ -68,7 +68,7 @@ public class ObslugaPlikowTest {
 		// TODO 3. Napisz poniżej odczyt pamieci gry z pliku przy uzyciu obslugi plikow
 		PamiecGry pamiecGryWczytana = obsluga.wczytajPamiecGry();
 		// TODO 4. Napisz sprawdzenie czy pamiec z 1. jest rowna pamieci z 3.
-
+		Sprawdz.czySaRowne(pamiecGry, pamiecGryWczytana, "odczytIZapisPamiecyGryZPliku sie nie udal");
 	}
 
 

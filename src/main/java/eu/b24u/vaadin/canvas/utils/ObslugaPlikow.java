@@ -34,6 +34,15 @@ public class ObslugaPlikow {
 		return gson.toJson(doZamianyWJSON);
 	}
 
+	/**
+	 * Metoda odczytuje obiekt z Jsona
+	 * 
+	 * @param jsonTekst
+	 *            napis w formacie json
+	 * @param nazwaPlikuClass
+	 *            nazwa typu na ktory zmieniamy
+	 * @return typ na ktory zmieniamy
+	 */
 	public Object odczytajZJSON(String jsonTekst, Class nazwaPlikuClass) {
 		return gson.fromJson(jsonTekst, nazwaPlikuClass);
 	}
@@ -126,7 +135,8 @@ public class ObslugaPlikow {
 		// TODO 3. odczytajJson z pliku
 		String json = odczytajZPliku(plik);
 		// TODO 4. zamien jsona na pamiecGry
+		PamiecGry pamiecGry = (PamiecGry) odczytajZJSON(json, PamiecGry.class);
 		// TODO 5. zwroc pamiecGry
-		return null;
+		return pamiecGry;
 	}
 }

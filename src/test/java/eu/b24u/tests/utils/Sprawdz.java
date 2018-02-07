@@ -2,6 +2,8 @@ package eu.b24u.tests.utils;
 
 import static org.junit.Assert.assertEquals;
 
+import eu.b24u.vaadin.canvas.utils.PamiecGry;
+
 public class Sprawdz {
 	/**
 	 * metoda sprawda czy wartosc oczekiwana jest rowna wartosci
@@ -14,6 +16,10 @@ public class Sprawdz {
 	 *            to tekst wyswietlony w trakcie niepowodzenia
 	 */
 	public static void czySaRowne(String wartoscOczekiwana, String wartosc, String wiadomosc) {
+		assertEquals(wiadomosc, wartoscOczekiwana, wartosc);
+	}
+
+	public static void czySaRowne(PamiecGry wartoscOczekiwana, PamiecGry wartosc, String wiadomosc) {
 		assertEquals(wiadomosc, wartoscOczekiwana, wartosc);
 	}
 
