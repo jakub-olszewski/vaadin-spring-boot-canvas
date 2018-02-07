@@ -19,6 +19,39 @@ public class PamiecGry {
 		ustawListaGraczy(new ListaGraczy());
 	}
 
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((listaGraczy == null) ? 0 : listaGraczy.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PamiecGry other = (PamiecGry) obj;
+		if (listaGraczy == null) {
+			if (other.listaGraczy != null)
+				return false;
+		} else {
+			for (Gracz gracz : listaGraczy) {
+				if (!other.listaGraczy.contains(gracz)) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
+
+	}
+
 	ListaGraczy listaGraczy;
 
 	public ListaGraczy pobierzListaGraczy() {

@@ -2,11 +2,11 @@ package eu.b24u.vaadin.canvas.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
-
 /**
  * klasa obsługująca piki
  * 
@@ -14,6 +14,9 @@ import com.google.gson.Gson;
  *
  */
 public class ObslugaPlikow {
+
+	private static Logger logger = Logger.getLogger("ObslugaPlikow");
+
 	Gson gson;
 	
 	public ObslugaPlikow() {
@@ -96,5 +99,26 @@ public class ObslugaPlikow {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	/**
+	 * Metoda zapisuje pamiecGry do pliku
+	 */
+	public void zapiszPamiecGry(PamiecGry pamiecGry) {
+		// TODO 1. pobierzSciezkeDoPlikuZProjektu dla pliku o nazwie 'data.json'
+		// TODO 2. utworzJsona z pamiecGry za pomoca zapiszDoJSON
+		// TODO 3. zapiszDoPliku jsona
+	}
+
+	/**
+	 * Metoda odczytuje pamiecGry z pliku
+	 */
+	public PamiecGry wczytajPamiecGry() {
+		// TODO 1. pobierzSciezkeDoPlikuZProjektu dla pliku o nazwie 'data.json'
+		// TODO 2. pobierzPlik
+		// TODO 3. odczytajJson z pliku
+		// TODO 4. zamien jsona na pamiecGry
+		// TODO 5. zwroc pamiecGry
+		return null;
 	}
 }
