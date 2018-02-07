@@ -62,4 +62,9 @@ public class PamiecGry {
 		this.listaGraczy = listaGraczy;
 	}
 
+	public void dodajGraczaDoListy(Gracz nowyGraczJanek) {
+		pobierzListaGraczy().dodajGracza(nowyGraczJanek);
+
+	}
+
 }

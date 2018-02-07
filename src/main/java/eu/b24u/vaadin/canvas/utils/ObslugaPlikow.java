@@ -106,8 +106,12 @@ public class ObslugaPlikow {
 	 */
 	public void zapiszPamiecGry(PamiecGry pamiecGry) {
 		// TODO 1. pobierzSciezkeDoPlikuZProjektu dla pliku o nazwie 'data.json'
+		String sciezkaDoPliku = pobierzSciezkeDoPlikuZProjektu("data.json");
 		// TODO 2. utworzJsona z pamiecGry za pomoca zapiszDoJSON
+		String json = zapiszDoJSON(pamiecGry);
+		logger.info("json=" + json);
 		// TODO 3. zapiszDoPliku jsona
+		zapiszDoPliku(json, sciezkaDoPliku);
 	}
 
 	/**
@@ -115,8 +119,12 @@ public class ObslugaPlikow {
 	 */
 	public PamiecGry wczytajPamiecGry() {
 		// TODO 1. pobierzSciezkeDoPlikuZProjektu dla pliku o nazwie 'data.json'
+		String sciezkaDoPliku = pobierzSciezkeDoPlikuZProjektu("data.json");
 		// TODO 2. pobierzPlik
+		Plik plik = pobierzPlik(sciezkaDoPliku);
+
 		// TODO 3. odczytajJson z pliku
+		String json = odczytajZPliku(plik);
 		// TODO 4. zamien jsona na pamiecGry
 		// TODO 5. zwroc pamiecGry
 		return null;

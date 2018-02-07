@@ -53,16 +53,20 @@ public class ObslugaPlikowTest {
 	@Test
 	public void odczytIZapisPamiecyGryZPliku() {
 		ObslugaPlikow obsluga = new ObslugaPlikow();
-		PamiecGry pamiecGry;
+		PamiecGry pamiecGry = new PamiecGry();
 		// TODO 1. Napisz przykladowe testowe dane do pamieci gry
 		// a) Stworz nowego testowego gracza
+		Gracz nowyGraczJanek = new Gracz();
+		nowyGraczJanek.ustawImieGracza("Janek");
 		// b) Stworz metode w pamieciGry o nazwie dodajGraczaDoListy(Gracz nowyGracz)
-		// c) Dodaj gracza do pamieciGry
+		pamiecGry.dodajGraczaDoListy(nowyGraczJanek);
+
 
 		// TODO 2. Napisz poniżej zapis pamieci gry przy uzyciu obslugi plikow
+		obsluga.zapiszPamiecGry(pamiecGry);
 
 		// TODO 3. Napisz poniżej odczyt pamieci gry z pliku przy uzyciu obslugi plikow
-
+		PamiecGry pamiecGryWczytana = obsluga.wczytajPamiecGry();
 		// TODO 4. Napisz sprawdzenie czy pamiec z 1. jest rowna pamieci z 3.
 
 	}
